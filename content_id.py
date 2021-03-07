@@ -1,14 +1,19 @@
 #!/usr/bin/env python3
 #
-# Determines IPFS version 1 content identifiers of bytes.
+# Copyright 2020 Christian Seberino
 #
-# The following algorithm is used:
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
 #
-#         1. Determine the DAG-PB encoding.
-#         2. Determine the SHA-256 hash.
-#         3. Prepend bytes.
-#         4. Determine the base 32 encoding.
-#         5. Prepend a character.
+# This program is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import hashlib
 import base64
