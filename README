@@ -1,0 +1,17 @@
+Determines IPFS (InterPlanetary File System) version 1 content identifiers.
+
+The following algorithm is used for bytes:
+
+        1. Determine the DAG-PB encoding.
+        2. Determine the SHA-256 hash.
+        3. Prepend bytes.
+        4. Determine the base 32 encoding.
+        5. Prepend a character.
+
+Call the content_id function and pass in bytes.  For example:
+
+>>> import content_id
+>>> content_id.content_id(b"Hello World!")
+'bafybeihxyzvryabv2uwvyfn6p4d6qrxegpgkszyynylmgmlnlfl4kkuugq'
+
+See the source code and other IPFS resources for further details.
