@@ -18,9 +18,9 @@
 import hashlib
 import base64
 
-CID_ENC    = "b"
 CID_VER    = b"\x01"
-B32_END    = b"="
+CID_ENC    = "b"
+CID_END    = b"="
 S256_CODE  = b"\x12"
 S256_LEN   = b" "
 DPB_ENC    = b"p"
@@ -44,14 +44,12 @@ def varint(n):
         Determines varints.
         """
 
-        bits   = bin(n)[2:]
-        bits_  = "".join(reversed(bits))
-        groups = [bits_[i:i + VI_G_SIZE]
-                  for i in range(0, len(bits_), VI_G_SIZE)]
+        b_rev  = "".join(reversed(bin(n)[2:]))
+        groups = [b_rev[i:i + VI_G_SIZE]
+                  for i in range(0, len(b_rev), VI_G_SIZE)]
         groups = ["".join(reversed(e)).zfill(VI_G_SIZE) for e in groups]
         hex_   = ["1" + e for e in groups[:-1]] + ["0" + groups[-1]]
-        hex_   = [hex(int(e, BINARY))[2:].zfill(BYTE) for e in hex_]
-        hex_   = "".join(hex_)
+        hex_   = "".join([hex(int(e, BINARY))[2:].zfill(BYTE) for e in hex_])
         bytes_ = bytes.fromhex(hex_)
 
         return bytes_
@@ -98,6 +96,6 @@ def content_id(bytes_):
         """
 
         cid = base64.b32encode(CID_VER + DPB_ENC + multihash(bytes_))
-        cid = CID_ENC + cid[:cid.find(B32_END)].decode().lower()
+        cid = CID_ENC + cid[:cid.find(CID_END)].decode().lower()
 
         return cid

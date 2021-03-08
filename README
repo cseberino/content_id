@@ -2,7 +2,7 @@ Determines IPFS (InterPlanetary File System) version 1 content identifiers.
 
 Operates only on bytes using the following algorithm:
 
-        1. Determine the DAG-PB encoding.
+        1. Determine the DAG-PB  encoding.
         2. Determine the SHA-256 hash.
         3. Prepend bytes.
         4. Determine the base 32 encoding.
