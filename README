@@ -8,10 +8,4 @@ Operates only on bytes using the following algorithm:
         4. Determine the base 32 encoding.
         5. Prepend a character.
 
-Call the content_id function and pass in bytes.  For example:
-
-        >>> import content_id
-        >>> content_id.content_id(b"Hello World!")
-        'bafybeihxyzvryabv2uwvyfn6p4d6qrxegpgkszyynylmgmlnlfl4kkuugq'
-
 See the source code and other IPFS resources for further details.
