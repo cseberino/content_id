@@ -5,15 +5,10 @@ sys.path.append("..")
 
 import content_id
 import unittest
-import warnings
 
 DPB_B_SIZE = 2 ** 18
 
 class Tester(unittest.TestCase):
-        def setUp(self):
-                warnings.simplefilter("ignore", ResourceWarning)
-                warnings.simplefilter("ignore", DeprecationWarning)
-
         def test_ipfs_obj(self):
                 output = content_id.ipfs_obj(b"Hello World\n")
                 answer = b"\n\x12\x08\x02\x12\x0cHello World\n\x18\x0c"
@@ -31,7 +26,7 @@ class Tester(unittest.TestCase):
 
                 bytes_ = 100 * DPB_B_SIZE * b"A"
                 output = content_id.ipfs_obj(bytes_)
-                answer = open("big_ipfs_obj", "rb").read()
+                with open("big_ipfs_obj", "rb") as f: answer = f.read()
                 self.assertEqual(output, answer)
 
         def test_content_id(self):
